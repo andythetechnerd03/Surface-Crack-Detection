@@ -8,7 +8,7 @@ import torch
 from torchvision import transforms
 import pandas as pd
 
-from src.model import SimpleCNN
+from src.model import SimpleCNN, SegmentedCNN
 st.set_page_config(layout="wide")
 st.title("Surface Crack Detection")
 # wide layout
@@ -26,7 +26,7 @@ def segment_image(image, threshold=125):
 
 def load_model(model_path: str):
     model = SimpleCNN().to(device)
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(model_path, map_location=device))
     model.eval()
     return model
 
@@ -37,7 +37,13 @@ def predict(model, image: np.ndarray):
     return output
 
 def main():
-    model_path = "models/model.pth"
+    # make a dropdown list for selecting the model
+    model_map = {
+        "Simple CNN": "models/simplecnn.pth",
+        "Segmented CNN": "models/segmentedcnn.pth"
+    }
+    model_path = model_map[st.selectbox("Select Model", list(model_map.keys()))]
+
     model = load_model(model_path)
 
     c1, c2 = st.columns([1, 1])

@@ -12,6 +12,7 @@ Surface crack detection is essential in various industries, such as construction
 - [KaggleHub](https://pypi.org/project/kagglehub/): Facilitates downloading datasets directly from Kaggle.
 
 ## Repository Structure
+- `notebook.ipynb`: Jupyter notebook for experimentation and testing.
 - `models/cnn.pth`: The trained CNN model file.
 - `app.py`: The main file for the Streamlit web application.
 - `src/model.py`: Contains the definition of the `SimpleCNN` model.
@@ -54,6 +55,17 @@ The web application successfully detects surface cracks in uploaded images with 
     - Open your web browser and go to the URL provided by Streamlit (usually `http://localhost:8501`).
     - Upload an image in JPG format.
     - Click the "Predict" button to see the prediction and probability. The web app also includes a segmented image showing the detected crack (this is rule-based, not ML).
+
+## Experimentation
+
+The following table summarizes the results of the experiments conducted during the development of the project. The two solutions compared are a CNN model and a combination of image segmentation followed by a CNN model.
+
+| Metric                | CNN          | Segment + CNN |
+|-----------------------|--------------|----------------|
+| Number of Parameters  | 809,753      | 809,177        |
+| Test Loss             | 0.0337       | 0.0428         |
+| Test Accuracy         | 0.9892       | 0.9880         |
+| Test F1 Score         | 0.9891       | 0.9880         |
 
 ## Acknowledgements
 - **Contributors**: 

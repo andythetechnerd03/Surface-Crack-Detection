@@ -8,4 +8,4 @@ Pillow==11.0.0
 streamlit==1.26.0
 torch==2.0.1
 torchvision==0.15.2
-~pencv_python_headless==4.8.0.76
+torchsummary==1.5.1
